@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 //import {Summa} from '.fonts';
 
 
@@ -17,9 +18,9 @@ function LandingPage() {
               exploraciones médicas para una detección rápida y precisa del
               cáncer.
             </h2>
-            <button className="mt-4 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-[#18D2D5] text-[#0A1931] text-base font-bold tracking-wide shadow-xl shadow-secondary/20 hover:bg-opacity-90 transition-all transform hover:scale-105">
+            <Link href="/diagnosticar" className="mt-4 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-[#18D2D5] text-[#0A1931] text-base font-bold tracking-wide shadow-xl shadow-secondary/20 hover:bg-opacity-90 transition-all transform hover:scale-105">
               <span className="truncate">Analizar ahora</span>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
