@@ -24,3 +24,13 @@ body {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   font-size: 24px;
 }
+
+.bg-aiyuda-gradient {
+  /* Define el ángulo del gradiente (bottom right = abajo a la derecha) */
+  background-image: linear-gradient(to bottom right, 
+      /* Índigo 50 (similar al color de Tailwind) */
+     #e0f7fa, 
+        #f3e5f5  
+      /* Púrpura 50 (similar al color de Tailwind) */
+  );
+}
