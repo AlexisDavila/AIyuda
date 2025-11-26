@@ -1,31 +1,25 @@
 "use server"
 
-import { ErrorResponseSchema, ClinicDataSchema, SuccessResponseSchema } from "@/src/schema"
+import { ErrorResponseSchema, ClinicDataSchema, SuccessResponseSchema, ClinicDataResposenseSchema } from "@/src/schema"
 
-export async function submitImage(data:unknown) {
-   console.log(data)
-   const order = ClinicDataSchema.parse(data)
-   const url = `${process.env.NEXT_PUBLIC_API_URL}/predict/multimodal`
-   const req = await fetch(url, {
-      method: 'POST',
-      headers: {
-         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({...order})
-   })
-   const json = await req.json()
-   
-   if(!req.ok) {
-      const errors = ErrorResponseSchema.parse(json)
-      return { 
-         errors : errors.message.map(issue => issue),
-         success: ''
+export async function submitImage(formData:unknown) {
+
+   try {
+      // Enviar directamente a la API de FastAPI
+      const response = await fetch("http://127.0.0.1:8000/predict/multimodal", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
       }
-   }
-   const success = SuccessResponseSchema.parse(json)
-   console.debug(success)
-   return {
-      errors: [],
-      success: success.message
-   }
+
+      const data = await response.json();
+      return data
+      
+    } catch (error) {
+      console.error("Error al analizar:", error);
+    } 
+   
 }

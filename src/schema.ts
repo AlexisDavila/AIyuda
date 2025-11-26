@@ -146,19 +146,6 @@ export const ClinicDataResposenseSchema = z.object({
    final_probability: z.number()
 })
 
-/** Order for car */
-
-const OrderContentSchema = z.object({
-  productId: z.number(),
-  quantity: z.number(),
-  price: z.number()
-})
-export const OrderSchema = z.object({
-  total: z.number(),
-  coupon: z.string(),
-  contents: z.array(OrderContentSchema).min(1, {message: 'El Carrito no puede ir vacio'})
-})
-
 /** Success / Error Response */
 export const SuccessResponseSchema = z.object({
   message: z.string()
