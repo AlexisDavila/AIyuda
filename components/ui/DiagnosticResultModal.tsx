@@ -35,14 +35,14 @@ const DiagnosticResultModal: React.FC<DiagnosticResultModalProps> = ({
   const chartData = [
     {
       name: predictionText,
-      value: (finalProbability * 100).toFixed(1),
-      probability: finalProbability,
+      value: (benignProbability * 100).toFixed(2),
+      probability: benignProbability,
       color: predictionColor,
     },
     {
       name: result.final_prediction === 0 ? "Maligno" : "Benigno",
-      value: (benignProbability * 100).toFixed(1),
-      probability: benignProbability,
+      value: (finalProbability * 100).toFixed(2),
+      probability: finalProbability,
       color: result.final_prediction === 0 ? "#EF4444" : "#10B981",
     },
   ];
@@ -82,6 +82,9 @@ const DiagnosticResultModal: React.FC<DiagnosticResultModalProps> = ({
             >
               {predictionText}
             </div>
+            <p className="mt-3 text-sm text-slate-500">
+              Probabilidad: {(benignProbability * 100).toFixed(2)}%
+            </p>
           </div>
 
           {/* Pie Chart */}
@@ -93,7 +96,7 @@ const DiagnosticResultModal: React.FC<DiagnosticResultModalProps> = ({
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ name, value }) => `${name}: ${value}%`}
+                  label={(entry: any) => `${entry.name}: ${(entry.probability * 100).toFixed(2)}%`}
                   outerRadius={100}
                   fill="#8884d8"
                   dataKey="probability"
@@ -105,7 +108,6 @@ const DiagnosticResultModal: React.FC<DiagnosticResultModalProps> = ({
                 <Tooltip
                   formatter={(value: number) => `${(value * 100).toFixed(2)}%`}
                 />
-                <Legend />
               </PieChart>
             </ResponsiveContainer>
           </div>
