@@ -12,7 +12,7 @@ const menuLinks = [
    { path:"/", label:"Home" },
    { path:"/about", label:"About"},
    { path:"/scannerImage", label:"Escaner de Imagen"},
-   { path:"/scannerText", label:"Analizar texto"},
+   { path:"/analysisText", label:"Analizar texto"},
    ]
 
 type MenuProps ={
